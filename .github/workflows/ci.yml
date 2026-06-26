@@ -1,5 +1,5 @@
 name: CI
-# Repository: https://github.com/Precision-AI-Inc/pai-ag-template
+# Repository: https://github.com/Precision-AI-Inc/pai-agribench-utils
 
 on:
   push:

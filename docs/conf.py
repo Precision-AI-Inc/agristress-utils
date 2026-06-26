@@ -1,14 +1,12 @@
 # Configuration file for the Sphinx documentation builder.
 # See https://www.sphinx-doc.org/en/master/usage/configuration.html
-#
-# Replace "MyProject" / "pai.myproject" with your actual project name before shipping.
 
 import os
 import shutil
 import subprocess
 import sys
 
-# Add project root so 'pai' can be imported for autodoc.
+# Add project root so 'precisionai' can be imported for autodoc.
 _root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, _root)
 
@@ -46,7 +44,7 @@ print("Version: ", version)
 print("Release: ", release)
 
 # -- General configuration ----------------------------------------------------
-project = "PAI MyProject"
+project = "PAI Agribench Utils"
 copyright = "Precision AI"
 author = "Precision AI"
 
@@ -84,7 +82,7 @@ latex_documents = [
     (
         "index",
         "documentation.tex",
-        "PAI MyProject",
+        "PAI Agribench Utils",
         author,
         "manual",
         True,
@@ -97,10 +95,10 @@ latex_additional_files = ["assets/logo.png"] if os.path.isfile(_logo_path) else 
 _logo_latex = "logo" if latex_additional_files else ""
 
 _header_right = (
-    r"\raisebox{-0.2\height}{\includegraphics[height=0.45cm]{%s.png}}\quad PAI MyProject --- %s"
+    r"\raisebox{-0.2\height}{\includegraphics[height=0.45cm]{%s.png}}\quad PAI Agribench Utils --- %s"
     % (_logo_latex, version)
     if _logo_latex
-    else "PAI MyProject --- %s" % version
+    else "PAI Agribench Utils --- %s" % version
 )
 
 _latex_preamble = r"""
