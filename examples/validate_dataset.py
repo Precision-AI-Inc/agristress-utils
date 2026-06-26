@@ -1,3 +1,6 @@
+# Copyright 2026 Precision AI
+# SPDX-License-Identifier: Apache-2.0
+
 """Validate a locally downloaded AgriBench dataset.
 
 Checks that all three JSON manifests are present and parseable, that file

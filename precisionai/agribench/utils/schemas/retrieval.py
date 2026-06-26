@@ -1,3 +1,6 @@
+# Copyright 2026 Precision AI
+# SPDX-License-Identifier: Apache-2.0
+
 """TypedDicts for retrieval payload assembly.
 
 Each type mirrors the corresponding request schema in

@@ -1,3 +1,6 @@
+# Copyright 2026 Precision AI
+# SPDX-License-Identifier: Apache-2.0
+
 """Standalone example: load the dataset and build evaluator payloads.
 
 Demonstrates the full workflow — enumerating IDs, resolving file paths,

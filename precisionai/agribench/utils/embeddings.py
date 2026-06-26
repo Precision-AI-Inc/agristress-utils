@@ -1,3 +1,6 @@
+# Copyright 2026 Precision AI
+# SPDX-License-Identifier: Apache-2.0
+
 """Embedding validation and normalisation utilities.
 
 Provides pre-flight checks and L2 normalisation so that embedding vectors
