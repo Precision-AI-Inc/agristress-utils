@@ -1,58 +1,46 @@
-# ── Project identity ──────────────────────────────────────────────────────────
-# Replace every occurrence of "myproject" / "pai-myproject" / "PAI MyProject"
-# with your actual project name before shipping.
-
 [build-system]
 requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pai-myproject"
+name = "pai-agribench-utils"
 version = "0.1.0"
-description = "Precision AI — <short project description>"
+description = "Dataset utilities for AgriBench — HuggingFace download, metadata lookup, and retrieval payload assembly for the PAI embedding evaluator."
 license = { file = "LICENSE.md" }
 requires-python = ">=3.10"
 dependencies = [
-    "fastapi>=0.111",
-    "uvicorn[standard]>=0.29",
     "pydantic>=2.0",
+    "huggingface_hub>=0.23",
 ]
 
 [project.optional-dependencies]
 test = [
     "pytest>=7.0",
     "pytest-cov>=5.0",
-    "httpx2>=0.28",
 ]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=5.0",
-    "httpx2>=0.28",
     "pre-commit>=3.7",
     "pyright>=1.1",
-    "genbadge[coverage]>=1.1",
 ]
-
-[project.scripts]
-# Rename the CLI entry point to match your project.
-pai-myproject = "pai.myproject.api.app:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["pai*"]
+include = ["precisionai*"]
 
 # ── pytest ────────────────────────────────────────────────────────────────────
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_functions = ["test_*"]
-addopts = "--cov=pai --cov-report=term-missing --cov-fail-under=90"
+addopts = "--cov=precisionai --cov-report=term-missing --cov-fail-under=90"
 markers = [
     "integration: marks tests that require external resources (deselect with '-m \"not integration\"')",
 ]
 
 [tool.coverage.run]
-source = ["pai"]
+source = ["precisionai"]
 omit = ["*/tests/*", "*/__init__.py"]
 relative_files = true
 
@@ -99,7 +87,6 @@ select = [
 ]
 ignore = [
     "E501",    # line too long — enforced by ruff-format at 120 chars
-    "B008",    # function calls in default args (FastAPI uses this pattern)
     "SIM108",  # ternary operator — sometimes less readable
     "D100",    # missing docstring in public module
     "D104",    # missing docstring in public package
@@ -108,8 +95,6 @@ ignore = [
     "PLR0913", # too many arguments — common in evaluation functions
     "PLR2004", # magic value comparisons — acceptable in tests/metrics
     "ANN401",  # typing.Any is allowed for genuinely dynamic types
-    "S311",    # pseudo-random generators are intentional in scientific code
-    "S104",    # binding to 0.0.0.0 is intentional for a configurable server host
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -124,7 +109,7 @@ convention = "numpy"
 max-complexity = 10
 
 [tool.ruff.lint.isort]
-known-first-party = ["pai"]
+known-first-party = ["precisionai"]
 
 [tool.ruff.format]
 quote-style = "double"
