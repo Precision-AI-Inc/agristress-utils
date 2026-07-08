@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md)
 
-Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`pai-agrieval-emb`](https://github.com/Precision-AI-Inc/pai-agrieval-emb) embedding evaluator.
+Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`agrieval`](https://github.com/Precision-AI-Inc/agrieval) embedding evaluator.
 
 ---
 
@@ -112,7 +112,7 @@ Both image and instance IDs are accepted. The returned paths are resolved but no
 
 ## Embedding utilities
 
-The `pai-agrieval-emb` evaluator requires every vector to be **L2-normalized** (‖v‖₂ = 1.0 ± 1e-3). Use these utilities to normalize and validate before building payloads:
+The `agrieval` evaluator requires every vector to be **L2-normalized** (‖v‖₂ = 1.0 ± 1e-3). Use these utilities to normalize and validate before building payloads:
 
 ```python
 from precisionai.agristress.utils import normalize_embeddings, validate_embeddings
@@ -169,7 +169,7 @@ for r in records:
 
 ## Retrieval payload builders
 
-Assemble the exact request body expected by `pai-agrieval-emb`. All embedding vectors must be **L2-normalized** flat `list[float]`.
+Assemble the exact request body expected by `agrieval`. All embedding vectors must be **L2-normalized** flat `list[float]`.
 
 | Method | Evaluator endpoint |
 |---|---|

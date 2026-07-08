@@ -5,7 +5,7 @@
 
 Demonstrates the full workflow — enumerating IDs, resolving file paths,
 normalising embeddings, and assembling all three retrieval payloads for use
-with the pai-agrieval-emb embedding evaluator.
+with the agrieval embedding evaluator.
 
 Run from the project root::
 

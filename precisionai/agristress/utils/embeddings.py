@@ -4,7 +4,7 @@
 """Embedding validation and normalisation utilities.
 
 Provides pre-flight checks and L2 normalisation so that embedding vectors
-satisfy the contract required by the ``pai-agrieval-emb`` embedding evaluator
+satisfy the contract required by the ``agrieval`` embedding evaluator
 before payloads are posted.
 """
 
