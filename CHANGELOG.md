@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-07-08
+
 ### Changed
 
+- Renamed PyPI distribution from `pai-agristress-utils` to `precisionai-agristress-utils` to match the registered PyPI trusted publisher.
 - Renamed package from `pai-agribench-utils` to `pai-agristress-utils` to align with the AgriStress-500 dataset name.
 - Renamed `AgriBenchDataset` → `AgriStressDataset` throughout the public API.
 - Updated HuggingFace default repo ID to `precisionaiinc/AgriStress-500`.
@@ -28,5 +31,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pydantic record models: `ImageRecord`, `InstanceRecord`, `ImageAttributes`.
 - Retrieval payload builders: `build_i2i_payload`, `build_p2i_payload`, `build_p2p_payload`.
 
-[Unreleased]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/Precision-AI-Inc/agristress-utils/releases/tag/v0.1.0

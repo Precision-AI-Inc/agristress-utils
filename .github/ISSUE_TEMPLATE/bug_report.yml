@@ -41,7 +41,7 @@ body:
       label: Environment
       description: |
         - Python version
-        - `pip show pai-agristress-utils` output
+        - `pip show precisionai-agristress-utils` output
         - OS
     validations:
       required: true

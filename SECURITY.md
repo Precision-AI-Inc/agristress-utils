@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Security fixes are provided for the latest released version of `pai-agristress-utils`.
+Security fixes are provided for the latest released version of `precisionai-agristress-utils`.
 
 Older versions are not guaranteed to receive patches. Please upgrade to the latest release before reporting a vulnerability where practical.
 
@@ -19,7 +19,7 @@ Please include as much of the following as possible:
 - A brief description of the issue
 - Steps to reproduce, including any relevant input data
 - A minimal proof of concept, if available
-- The affected package version (`pip show pai-agristress-utils`)
+- The affected package version (`pip show precisionai-agristress-utils`)
 - Python version and operating system
 - Any known impact or realistic attack scenario
 
@@ -55,5 +55,5 @@ If a vulnerability is confirmed, we will:
 Security fixes are distributed through normal package channels. Upgrade with:
 
 ```bash
-pip install --upgrade pai-agristress-utils
+pip install --upgrade precisionai-agristress-utils
 ```
