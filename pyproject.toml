@@ -3,7 +3,7 @@ requires = ["setuptools>=61", "wheel", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pai-agristress-utils"
+name = "precisionai-agristress-utils"
 dynamic = ["version"]
 description = "Dataset utilities for AgriStress-500 — HuggingFace download, metadata lookup, and retrieval payload assembly for the PAI embedding evaluator."
 readme = "README.md"

@@ -6,8 +6,8 @@
 
 Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`agrieval`](https://github.com/Precision-AI-Inc/agrieval) embedding evaluator.
 
-[![PyPI](https://img.shields.io/pypi/v/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
-[![Python](https://img.shields.io/pypi/pyversions/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
+[![PyPI](https://img.shields.io/pypi/v/precisionai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/precisionai-agristress-utils/)
+[![Python](https://img.shields.io/pypi/pyversions/precisionai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/precisionai-agristress-utils/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md)
 
 ---
@@ -17,7 +17,7 @@ Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, 
 ```bash
 python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
-pip install pai-agristress-utils
+pip install precisionai-agristress-utils
 
 # Full development (tests, pre-commit, type checking)
 pip install -e ".[dev]"

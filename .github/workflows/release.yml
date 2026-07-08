@@ -33,7 +33,7 @@ jobs:
       - name: Check version matches tag
         run: |
           TAG_VERSION="${GITHUB_REF_NAME#v}"
-          BUILT_VERSION=$(python -c "import importlib.metadata as m; print(m.version('pai-agristress-utils'))")
+          BUILT_VERSION=$(python -c "import importlib.metadata as m; print(m.version('precisionai-agristress-utils'))")
           if [ "$TAG_VERSION" != "$BUILT_VERSION" ]; then
             echo "Tag v$TAG_VERSION does not match built version $BUILT_VERSION" >&2
             exit 1
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/project/pai-agristress-utils/
+      url: https://pypi.org/project/precisionai-agristress-utils/
     permissions:
       id-token: write
     steps:
