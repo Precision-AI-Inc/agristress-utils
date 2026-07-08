@@ -4,30 +4,28 @@
 
 # PAI AgriStress Utils
 
+Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`agrieval`](https://github.com/Precision-AI-Inc/agrieval) embedding evaluator.
+
 [![PyPI](https://img.shields.io/pypi/v/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
 [![Python](https://img.shields.io/pypi/pyversions/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md)
-
-Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`agrieval`](https://github.com/Precision-AI-Inc/agrieval) embedding evaluator.
 
 ---
 
 ## Installation
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+python -m venv .venv && source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
 pip install pai-agristress-utils
 
 # Full development (tests, pre-commit, type checking)
 pip install -e ".[dev]"
-pre-commit install
 ```
 
 ---
 
-## Quickstart
+## Quick start
 
 ```python
 from precisionai.agristress.utils import AgriStressDataset, download_dataset
@@ -192,47 +190,6 @@ Embedding keys not present in the dataset manifests are ignored. Clusters or ins
 
 ---
 
-## Standalone example
-
-```bash
-python examples/example.py --dataset /path/to/agristress
-```
-
----
-
-## Testing
-
-```bash
-# Run all tests with coverage report
-python -m pytest
-
-# Run a specific file
-pytest tests/test_loader.py
-
-# Run tests matching a keyword
-pytest -k "p2p"
-```
-
-Coverage must remain at or above **90%** — enforced by pytest and the pre-commit hook.
-
----
-
-## Pre-commit hooks
-
-| Hook | What it checks |
-|---|---|
-| File hygiene | Large files (> 1 MB), trailing whitespace, merge conflicts, private keys, debug statements |
-| `ruff` | Linting and import sorting (auto-fix) |
-| `ruff-format` | Code formatting (auto-fix) |
-| `pyright` | Static type checking |
-| `pytest` | Full test suite with ≥ 90% coverage |
-
-```bash
-pre-commit run --all-files
-```
-
----
-
 ## Project layout
 
 ```
@@ -248,41 +205,27 @@ tests/               # Mirrors package structure
 examples/            # Standalone runnable scripts
 ```
 
-See [CLAUDE.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CLAUDE.md) for the full coding standard.
-
 ---
 
-## Documentation
+## Development
+
+See [CONTRIBUTING.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CONTRIBUTING.md) for setup, branching, and PR guidelines, and [CODE_OF_CONDUCT.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CODE_OF_CONDUCT.md) for community expectations. [CLAUDE.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CLAUDE.md) documents the code style and conventions enforced in this repo.
 
 ```bash
-cd docs
-make html       # HTML docs → docs/_build/html/index.html
-make latexpdf   # PDF      → docs/_build/latex/documentation.pdf
-make clean      # Remove build artifacts
+# Run all tests with coverage report
+python -m pytest
+
+# Run a specific file
+pytest tests/test_loader.py
+
+# Run pre-commit hooks manually
+pre-commit run --all-files
 ```
-
-Dependencies: `pip install -r docs/requirements.txt`
-
----
-
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CODE_OF_CONDUCT.md).
-
----
-
-## Security
-
-To report a security vulnerability, see [SECURITY.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/SECURITY.md). Do not open a public issue.
-
----
-
-## Changelog
-
-See [CHANGELOG.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CHANGELOG.md).
 
 ---
 
 ## License
 
-[Apache 2.0](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md) © Precision AI, Inc.
+Licensed under the Apache License, Version 2.0. See [LICENSE.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md).
+
+See [CHANGELOG.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CHANGELOG.md) for release history.
