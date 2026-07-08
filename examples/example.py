@@ -5,18 +5,18 @@
 
 Demonstrates the full workflow — enumerating IDs, resolving file paths,
 normalising embeddings, and assembling all three retrieval payloads for use
-with the pai-agrieval-emb embedding evaluator.
+with the agrieval embedding evaluator.
 
 Run from the project root::
 
-    python examples/example.py --dataset /path/to/agribench
+    python examples/example.py --dataset /path/to/agristress
 """
 
 import argparse
 import math
 
-from precisionai.agribench.utils import (
-    AgriBenchDataset,
+from precisionai.agristress.utils import (
+    AgriStressDataset,
     normalize_embeddings,
     validate_embeddings,
 )
@@ -29,15 +29,15 @@ def _stub(ids: list[str], dim: int = 512) -> dict[str, list[float]]:
 
 def main() -> None:
     """Run the standalone dataset usage example."""
-    parser = argparse.ArgumentParser(description="PAI Agribench Utils — usage example")
+    parser = argparse.ArgumentParser(description="PAI AgriStress Utils — usage example")
     parser.add_argument(
         "--dataset",
         required=True,
-        help="Path to the dataset directory (e.g. /path/to/agribench).",
+        help="Path to the dataset directory (e.g. /path/to/agristress).",
     )
     args = parser.parse_args()
 
-    ds = AgriBenchDataset(args.dataset)
+    ds = AgriStressDataset(args.dataset)
 
     # ── Enumerate the dataset ─────────────────────────────────────────────────
     clusters = ds.list_clusters()
@@ -114,7 +114,7 @@ def main() -> None:
     p2p = ds.build_p2p_payload(normed_inst_emb)
     print(
         f"\nP2P      : {len(p2p['embeddings'])} embeddings | "
-        f"{len(p2p['instance_labels'])} labelled instances | "
+        f"{len(p2p['instance_labels'])} labeled instances | "
         f"k={p2p['k_values']}"
     )
     for inst, label in p2p["instance_labels"].items():

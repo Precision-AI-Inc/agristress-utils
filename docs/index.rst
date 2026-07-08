@@ -1,10 +1,10 @@
-PAI Agribench Utils
-===================
+PAI AgriStress Utils
+====================
 
-Welcome to the **PAI Agribench Utils** documentation.
+Welcome to the **PAI AgriStress Utils** documentation.
 
 - The **Getting started** chapter is the project README: installation, API usage, and example scripts.
-- The **Module Reference** chapter documents the full ``precisionai.agribench.utils`` API — metrics, services, schemas, and routes.
+- The **Module Reference** chapter documents the full ``precisionai.agristress.utils`` API — schemas and dataset utilities.
 
 Contents
 --------

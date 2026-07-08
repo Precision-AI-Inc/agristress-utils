@@ -1,10 +1,10 @@
 # Copyright 2026 Precision AI
 # SPDX-License-Identifier: Apache-2.0
 
-"""Validate a locally downloaded AgriBench dataset.
+"""Validate a locally downloaded AgriStress-500 dataset.
 
 Checks that all three JSON manifests are present and parseable, that file
-counts match the AgriBench V1.0.0 specification, that every image and
+counts match the AgriStress-500 V1.0.0 specification, that every image and
 instance file referenced in the manifests exists on disk, and that the
 manifests are internally consistent with one another.
 
@@ -12,16 +12,16 @@ Exit code is 0 when all checks pass, 1 when any check fails.
 
 Run from the project root::
 
-    python examples/validate_dataset.py --dataset /path/to/agribench
+    python examples/validate_dataset.py --dataset /path/to/agristress
 """
 
 import argparse
 import sys
 from pathlib import Path
 
-from precisionai.agribench.utils import AgriBenchDataset
+from precisionai.agristress.utils import AgriStressDataset
 
-# Expected counts for AgriBench V1.0.0.
+# Expected counts for AgriStress-500 V1.0.0.
 _EXPECTED_CLUSTERS: int = 67
 _EXPECTED_IMAGES: int = 489
 _EXPECTED_INSTANCES: int = 5_933
@@ -42,10 +42,10 @@ def _info(msg: str) -> None:
     print(f"          {msg}")
 
 
-def _check_manifests(root: Path) -> AgriBenchDataset | None:
+def _check_manifests(root: Path) -> AgriStressDataset | None:
     print("Manifests")
     try:
-        ds = AgriBenchDataset(root)
+        ds = AgriStressDataset(root)
         _ok("image2image.json, plant2image.json, plant2plant.json -- all present and parseable")
         return ds
     except FileNotFoundError as err:
@@ -58,8 +58,8 @@ def _check_manifests(root: Path) -> AgriBenchDataset | None:
         return None
 
 
-def _check_counts(ds: AgriBenchDataset) -> tuple[bool, list[str], list[str]]:
-    print("\nCounts (expected for AgriBench V1.0.0)")
+def _check_counts(ds: AgriStressDataset) -> tuple[bool, list[str], list[str]]:
+    print("\nCounts (expected for AgriStress-500 V1.0.0)")
     passed = True
     images = ds.list_image_ids()
     instances = ds.list_instance_ids()
@@ -91,7 +91,7 @@ def _check_missing(label: str, ids: list[str], paths: dict[str, Path]) -> bool:
     return True
 
 
-def _check_files(ds: AgriBenchDataset, images: list[str], instances: list[str]) -> bool:
+def _check_files(ds: AgriStressDataset, images: list[str], instances: list[str]) -> bool:
     print(f"\nImage files ({len(images):,})")
     img_ok = _check_missing("image files", images, ds.resolve_paths(images))
     print(f"\nInstance files ({len(instances):,})")
@@ -99,7 +99,7 @@ def _check_files(ds: AgriBenchDataset, images: list[str], instances: list[str]) 
     return img_ok and inst_ok
 
 
-def _check_consistency(ds: AgriBenchDataset) -> bool:
+def _check_consistency(ds: AgriStressDataset) -> bool:
     print("\nCross-manifest consistency")
     passed = True
 
@@ -125,10 +125,10 @@ def _check_consistency(ds: AgriBenchDataset) -> bool:
     else:
         _ok("All plant2plant.json instances appear in plant2image.json")
 
-    unlabelled = all_instance_set - p2p_instances
-    if unlabelled:
-        _fail(f"{len(unlabelled)} instance(s) in plant2image.json have no label in plant2plant.json")
-        for inst in sorted(unlabelled)[:_MAX_LISTED]:
+    unlabeled = all_instance_set - p2p_instances
+    if unlabeled:
+        _fail(f"{len(unlabeled)} instance(s) in plant2image.json have no label in plant2plant.json")
+        for inst in sorted(unlabeled)[:_MAX_LISTED]:
             _info(inst)
         passed = False
     else:
@@ -138,7 +138,7 @@ def _check_consistency(ds: AgriBenchDataset) -> bool:
 
 
 def validate(dataset_dir: str | Path) -> bool:
-    """Validate the AgriBench dataset at *dataset_dir*.
+    """Validate the AgriStress-500 dataset at *dataset_dir*.
 
     Parameters
     ----------
@@ -152,7 +152,7 @@ def validate(dataset_dir: str | Path) -> bool:
         ``True`` if every check passed, ``False`` otherwise.
     """
     root = Path(dataset_dir).resolve()
-    print(f"Validating AgriBench dataset at: {root}\n")
+    print(f"Validating AgriStress-500 dataset at: {root}\n")
 
     ds = _check_manifests(root)
     if ds is None:
@@ -173,11 +173,11 @@ def validate(dataset_dir: str | Path) -> bool:
 
 def main() -> None:
     """Parse arguments and run dataset validation."""
-    parser = argparse.ArgumentParser(description="Validate a locally downloaded AgriBench V1.0.0 dataset.")
+    parser = argparse.ArgumentParser(description="Validate a locally downloaded AgriStress-500 V1.0.0 dataset.")
     parser.add_argument(
         "--dataset",
         required=True,
-        help="Path to the dataset directory (e.g. /path/to/agribench).",
+        help="Path to the dataset directory (e.g. /path/to/agristress).",
     )
     args = parser.parse_args()
 

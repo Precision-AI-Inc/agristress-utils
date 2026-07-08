@@ -7,7 +7,7 @@ import math
 
 import pytest
 
-from precisionai.agribench.utils.embeddings import normalize_embeddings, validate_embeddings
+from precisionai.agristress.utils.embeddings import normalize_embeddings, validate_embeddings
 
 # ── validate_embeddings ────────────────────────────────────────────────────────
 
@@ -20,8 +20,8 @@ def test_validate_embeddings_empty_dict_passes() -> None:
     validate_embeddings({})
 
 
-def test_validate_embeddings_not_normalised_raises() -> None:
-    with pytest.raises(ValueError, match="not L2-normalised"):
+def test_validate_embeddings_not_normalized_raises() -> None:
+    with pytest.raises(ValueError, match="not L2-normalized"):
         validate_embeddings({"a.png": [3.0, 4.0]})
 
 

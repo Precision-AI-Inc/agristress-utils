@@ -3,12 +3,12 @@
 
 """Unit tests for schemas.dataset and schemas.retrieval."""
 
-from precisionai.agribench.utils.schemas.dataset import (
+from precisionai.agristress.utils.schemas.dataset import (
     ImageAttributes,
     ImageRecord,
     InstanceRecord,
 )
-from precisionai.agribench.utils.schemas.retrieval import (
+from precisionai.agristress.utils.schemas.retrieval import (
     I2IPayload,
     MetadataGroupDict,
     P2IPayload,
