@@ -15,10 +15,10 @@ Apply these standards when writing, reviewing, or refactoring code in any PAI Py
 ## Project layout
 
 ```
-precisionai/agribench/utils/
+precisionai/agristress/utils/
   dataset/
     download.py  # HuggingFace single-shot download
-    loader.py    # AgriBenchDataset — metadata lookups + payload builders
+    loader.py    # AgriStressDataset — metadata lookups + payload builders
   schemas/       # Pydantic record models and retrieval payload TypedDicts
     dataset.py   # ImageRecord, InstanceRecord, ImageAttributes
     retrieval.py # I2IPayload, P2IPayload, P2PPayload, MetadataGroupDict

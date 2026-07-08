@@ -1,74 +1,54 @@
 Module Reference
 ================
 
-API documentation for the ``precisionai.agribench.utils`` package — metrics, services, schemas, and routes.
+API documentation for the ``precisionai.agristress.utils`` package.
 
-precisionai.agribench.utils.metrics
--------------------------------------
+precisionai.agristress.utils
+-----------------------------
 
-Top-level re-exports from the metrics package.
+Top-level re-exports: ``AgriStressDataset``, ``download_dataset``, ``normalize_embeddings``, ``validate_embeddings``.
 
-.. automodule:: precisionai.agribench.utils.metrics
+.. automodule:: precisionai.agristress.utils
    :members:
    :undoc-members:
    :show-inheritance:
 
-precisionai.agribench.utils.metrics.compute
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+precisionai.agristress.utils.dataset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pure computation utilities (stateless functions, no I/O).
+HuggingFace download and in-memory dataset loader.
 
-.. automodule:: precisionai.agribench.utils.metrics.compute
+.. automodule:: precisionai.agristress.utils.dataset.download
    :members:
    :undoc-members:
    :show-inheritance:
 
-precisionai.agribench.utils.services.hello
---------------------------------------------
-
-Business logic for greeting operations.
-
-.. automodule:: precisionai.agribench.utils.services.hello
+.. automodule:: precisionai.agristress.utils.dataset.loader
    :members:
    :undoc-members:
    :show-inheritance:
 
-precisionai.agribench.utils.schemas.hello
--------------------------------------------
+precisionai.agristress.utils.embeddings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pydantic request and response schemas for the hello endpoint.
+L2-norm validation and normalisation utilities.
 
-.. automodule:: precisionai.agribench.utils.schemas.hello
+.. automodule:: precisionai.agristress.utils.embeddings
    :members:
    :undoc-members:
    :show-inheritance:
 
-precisionai.agribench.utils.api.routes.hello
-----------------------------------------------
+precisionai.agristress.utils.schemas
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-FastAPI route handler for ``POST /v1/hello``.
+Pydantic record models and retrieval payload TypedDicts.
 
-.. automodule:: precisionai.agribench.utils.api.routes.hello
+.. automodule:: precisionai.agristress.utils.schemas.dataset
    :members:
    :undoc-members:
    :show-inheritance:
 
-precisionai.agribench.utils.api.config
-----------------------------------------
-
-Environment-variable configuration.
-
-.. automodule:: precisionai.agribench.utils.api.config
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-precisionai.agribench.utils.api.app
---------------------------------------
-
-FastAPI application factory and CLI entry point.
-
-.. automodule:: precisionai.agribench.utils.api.app
+.. automodule:: precisionai.agristress.utils.schemas.retrieval
    :members:
    :undoc-members:
    :show-inheritance:

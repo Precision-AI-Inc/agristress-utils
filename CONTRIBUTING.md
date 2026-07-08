@@ -8,7 +8,7 @@ Requires Python 3.10+.
 
 ```bash
 git clone <repo-url>
-cd pai-agribench-utils
+cd agristress-utils
 
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
@@ -68,6 +68,10 @@ Tests live in `tests/` and mirror the package structure. The coverage threshold 
 - Keep PRs focused — one logical change per PR.
 - Write a clear description of what changed and why.
 - All pre-commit hooks must pass before requesting review.
+
+## Code of Conduct
+
+This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

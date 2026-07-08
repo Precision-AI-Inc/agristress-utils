@@ -1,5 +1,5 @@
 name: CI
-# Repository: https://github.com/Precision-AI-Inc/pai-agribench-utils
+# Repository: https://github.com/Precision-AI-Inc/agristress-utils
 
 on:
   push:

@@ -1,13 +1,38 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=61", "wheel", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pai-agribench-utils"
-version = "0.1.0"
-description = "Dataset utilities for AgriBench — HuggingFace download, metadata lookup, and retrieval payload assembly for the PAI embedding evaluator."
+name = "pai-agristress-utils"
+dynamic = ["version"]
+description = "Dataset utilities for AgriStress-500 — HuggingFace download, metadata lookup, and retrieval payload assembly for the PAI embedding evaluator."
+readme = "README.md"
 license = { file = "LICENSE.md" }
+authors = [{ name = "Precision AI", email = "michael@precision.ai" }]
+maintainers = [{ name = "Precision AI", email = "michael@precision.ai" }]
 requires-python = ">=3.10"
+keywords = [
+    "agriculture",
+    "computer-vision",
+    "dataset",
+    "embeddings",
+    "evaluation",
+    "machine-learning",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+]
 dependencies = [
     "pydantic>=2.0",
     "huggingface_hub>=0.23",
@@ -25,11 +50,21 @@ dev = [
     "pyright>=1.1",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Precision-AI-Inc/agristress-utils"
+Repository = "https://github.com/Precision-AI-Inc/agristress-utils"
+Issues = "https://github.com/Precision-AI-Inc/agristress-utils/issues"
+Changelog = "https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CHANGELOG.md"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["precisionai*"]
 
-# ── pytest ────────────────────────────────────────────────────────────────────
+[tool.setuptools_scm]
+version_scheme = "no-guess-dev"
+local_scheme = "no-local-version"
+fallback_version = "0.0.0"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
@@ -54,14 +89,12 @@ exclude_lines = [
     "except ImportError",
 ]
 
-# ── pyright ───────────────────────────────────────────────────────────────────
 [tool.pyright]
 pythonVersion = "3.10"
 typeCheckingMode = "standard"
 reportMissingImports = false
 reportMissingModuleSource = false
 
-# ── ruff ──────────────────────────────────────────────────────────────────────
 [tool.ruff]
 line-length = 120
 target-version = "py310"

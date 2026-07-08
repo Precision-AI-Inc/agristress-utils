@@ -1,12 +1,14 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="Precision AI Logo" width="120"/>
+  <img src="https://raw.githubusercontent.com/Precision-AI-Inc/agristress-utils/main/docs/assets/logo.png" alt="Precision AI Logo" width="120"/>
 </p>
 
-# PAI Agribench Utils
+# PAI AgriStress Utils
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
+[![PyPI](https://img.shields.io/pypi/v/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
+[![Python](https://img.shields.io/pypi/pyversions/pai-agristress-utils.svg?include_prereleases)](https://pypi.org/project/pai-agristress-utils/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md)
 
-Dataset utilities for AgriBench — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`pai-agrieval-emb`](https://github.com/Precision-AI-Inc/pai-agrieval-emb) embedding evaluator.
+Dataset utilities for AgriStress-500 — download the dataset from HuggingFace, look up image and instance metadata, and assemble ready-to-POST payloads for the [`pai-agrieval-emb`](https://github.com/Precision-AI-Inc/pai-agrieval-emb) embedding evaluator.
 
 ---
 
@@ -16,7 +18,7 @@ Dataset utilities for AgriBench — download the dataset from HuggingFace, look 
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 
-pip install pai-agribench-utils
+pip install pai-agristress-utils
 
 # Full development (tests, pre-commit, type checking)
 pip install -e ".[dev]"
@@ -28,22 +30,22 @@ pre-commit install
 ## Quickstart
 
 ```python
-from precisionai.agribench.utils import AgriBenchDataset, download_dataset
+from precisionai.agristress.utils import AgriStressDataset, download_dataset
 
-download_dataset("/path/to/agribench", repo_id="precisionaiinc/AgriBench")
-ds = AgriBenchDataset("/path/to/agribench")
+download_dataset("/path/to/agristress", repo_id="precisionaiinc/AgriStress-500")
+ds = AgriStressDataset("/path/to/agristress")
 ```
 
-See [`examples/`](examples/) for complete walkthroughs of all three evaluator routes and dataset validation.
+See [`examples/`](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/examples/) for complete walkthroughs of all three evaluator routes and dataset validation.
 
 ---
 
 ## Downloading the dataset
 
 ```python
-from precisionai.agribench.utils import download_dataset
+from precisionai.agristress.utils import download_dataset
 
-download_dataset("/path/to/agribench", repo_id="precisionaiinc/AgriBench")
+download_dataset("/path/to/agristress", repo_id="precisionaiinc/AgriStress-500")
 ```
 
 Single-shot only — partial downloads are not supported. The `internal/` directory is always excluded. Returns the resolved local `Path`.
@@ -51,7 +53,7 @@ Single-shot only — partial downloads are not supported. The `internal/` direct
 After downloading, the directory layout is:
 
 ```
-/path/to/agribench/
+/path/to/agristress/
   images/          # source images, one subdirectory per L2 cluster
   instances/       # instance crops, one subdirectory per annotated cluster
   image2image.json
@@ -60,10 +62,10 @@ After downloading, the directory layout is:
   README.md
 ```
 
-Pass that directory directly to `AgriBenchDataset`:
+Pass that directory directly to `AgriStressDataset`:
 
 ```python
-ds = AgriBenchDataset("/path/to/agribench")
+ds = AgriStressDataset("/path/to/agristress")
 ```
 
 ---
@@ -74,12 +76,12 @@ Before embedding images you need to know what IDs exist. All IDs are relative pa
 
 ```python
 # All clusters, images, and instances
-clusters     = ds.list_clusters()                        # sorted list of L2 cluster names
-all_images   = ds.list_image_ids()                       # all 489 image paths
-all_instances = ds.list_instance_ids()                   # all 5 933 instance paths
+clusters      = ds.list_clusters()                        # sorted list of L2 cluster names
+all_images    = ds.list_image_ids()                       # all image paths
+all_instances = ds.list_instance_ids()                    # all instance paths
 
 # Narrow by cluster or label
-a1_images = ds.list_image_ids(cluster="A1")
+a1_images     = ds.list_image_ids(cluster="A1")
 soy_instances = ds.list_instance_ids(label="Crop | Soybean")
 
 # Filter by cluster attributes — scalar or list values
@@ -96,7 +98,7 @@ Map relative IDs to absolute file paths so you can open them with your image loa
 
 ```python
 paths = ds.resolve_paths(ds.list_image_ids(cluster="A1"))
-# {"images/A1/pai-FvearqMK.png": Path("/path/to/agribench/images/A1/pai-FvearqMK.png"), ...}
+# {"images/A1/pai-FvearqMK.png": Path("/path/to/agristress/images/A1/pai-FvearqMK.png"), ...}
 
 from PIL import Image
 for abs_path in paths.values():
@@ -110,13 +112,13 @@ Both image and instance IDs are accepted. The returned paths are resolved but no
 
 ## Embedding utilities
 
-The `pai-agrieval-emb` evaluator requires every vector to be **L2-normalised** (‖v‖₂ = 1.0 ± 1e-3). Use these utilities to normalise and validate before building payloads:
+The `pai-agrieval-emb` evaluator requires every vector to be **L2-normalized** (‖v‖₂ = 1.0 ± 1e-3). Use these utilities to normalize and validate before building payloads:
 
 ```python
-from precisionai.agribench.utils import normalize_embeddings, validate_embeddings
+from precisionai.agristress.utils import normalize_embeddings, validate_embeddings
 
-# Normalise raw model output
-raw = {"images/A1/pai-FvearqMK.png": model.encode(...)}  # unnormalised
+# Normalize raw model output
+raw = {"images/A1/pai-FvearqMK.png": model.encode(...)}  # unnormalized
 normed = normalize_embeddings(raw)                        # returns new dict, does not mutate
 
 # Validate before posting (raises ValueError if any vector deviates)
@@ -167,7 +169,7 @@ for r in records:
 
 ## Retrieval payload builders
 
-Assemble the exact request body expected by `pai-agrieval-emb`. All embedding vectors must be **L2-normalised** flat `list[float]`.
+Assemble the exact request body expected by `pai-agrieval-emb`. All embedding vectors must be **L2-normalized** flat `list[float]`.
 
 | Method | Evaluator endpoint |
 |---|---|
@@ -193,7 +195,7 @@ Embedding keys not present in the dataset manifests are ignored. Clusters or ins
 ## Standalone example
 
 ```bash
-python examples/example.py --dataset /path/to/agribench
+python examples/example.py --dataset /path/to/agristress
 ```
 
 ---
@@ -234,10 +236,10 @@ pre-commit run --all-files
 ## Project layout
 
 ```
-precisionai/agribench/utils/
+precisionai/agristress/utils/
   dataset/
     download.py      # HuggingFace single-shot download
-    loader.py        # AgriBenchDataset — metadata lookups + payload builders
+    loader.py        # AgriStressDataset — metadata lookups + payload builders
   schemas/
     dataset.py       # ImageRecord, InstanceRecord, ImageAttributes  (Pydantic)
     retrieval.py     # I2IPayload, P2IPayload, P2PPayload  (TypedDicts)
@@ -246,7 +248,7 @@ tests/               # Mirrors package structure
 examples/            # Standalone runnable scripts
 ```
 
-See [CLAUDE.md](CLAUDE.md) for the full coding standard.
+See [CLAUDE.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CLAUDE.md) for the full coding standard.
 
 ---
 
@@ -256,19 +258,31 @@ See [CLAUDE.md](CLAUDE.md) for the full coding standard.
 cd docs
 make html       # HTML docs → docs/_build/html/index.html
 make latexpdf   # PDF      → docs/_build/latex/documentation.pdf
-make clean      # Remove build artefacts
+make clean      # Remove build artifacts
 ```
 
 Dependencies: `pip install -r docs/requirements.txt`
 
 ---
 
+## Contributing
+
+See [CONTRIBUTING.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CODE_OF_CONDUCT.md).
+
+---
+
 ## Security
 
-To report a security vulnerability, see [SECURITY.md](SECURITY.md). Do not open a public issue.
+To report a security vulnerability, see [SECURITY.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/SECURITY.md). Do not open a public issue.
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/CHANGELOG.md).
 
 ---
 
 ## License
 
-[Apache 2.0](LICENSE.md) © Precision AI, Inc.
+[Apache 2.0](https://github.com/Precision-AI-Inc/agristress-utils/blob/main/LICENSE.md) © Precision AI, Inc.

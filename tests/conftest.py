@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from precisionai.agribench.utils.dataset.loader import AgriBenchDataset
+from precisionai.agristress.utils.dataset.loader import AgriStressDataset
 
 _I2I: dict = {
     "metadata": {
@@ -72,6 +72,6 @@ def dataset_root(tmp_path: Path) -> Path:
 
 
 @pytest.fixture
-def dataset(dataset_root: Path) -> AgriBenchDataset:
-    """Return an AgriBenchDataset loaded from the fixture manifests."""
-    return AgriBenchDataset(dataset_root)
+def dataset(dataset_root: Path) -> AgriStressDataset:
+    """Return an AgriStressDataset loaded from the fixture manifests."""
+    return AgriStressDataset(dataset_root)
