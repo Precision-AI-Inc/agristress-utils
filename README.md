@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Precision-AI-Inc/agristress-utils/main/docs/assets/logo.png" alt="Precision AI Logo" width="120"/>
+  <img src="https://raw.githubusercontent.com/Precision-AI-Inc/agristress-utils/main/docs/assets/logo.png" alt="Precision AI Logo" width="160"/>
 </p>
 
 # PAI AgriStress Utils

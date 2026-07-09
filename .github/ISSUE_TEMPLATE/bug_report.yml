@@ -1,47 +1,41 @@
 name: Bug report
-description: Report something that isn't working correctly.
+description: Report a problem with precisionai-agristress-utils
 labels: ["bug"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
-
   - type: textarea
     id: description
     attributes:
-      label: Description
-      description: A clear and concise description of the bug.
+      label: What happened?
+      description: A clear description of the bug and what you expected instead.
     validations:
       required: true
 
   - type: textarea
-    id: reproduction
+    id: repro
     attributes:
       label: Steps to reproduce
-      description: Minimal code or steps to reproduce the issue.
-      placeholder: |
-        from precisionai.agristress.utils import AgriStressDataset
-        ds = AgriStressDataset("/path/to/dataset")
-        ...
+      description: Minimal code, CLI command, or API request that reproduces the issue.
+      render: shell
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: precisionai-agristress-utils version
+      description: Output of `pip show precisionai-agristress-utils`.
+    validations:
+      required: true
+
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version and OS
     validations:
       required: true
 
   - type: textarea
-    id: expected
+    id: logs
     attributes:
-      label: Expected behavior
-      description: What you expected to happen.
-    validations:
-      required: true
-
-  - type: textarea
-    id: environment
-    attributes:
-      label: Environment
-      description: |
-        - Python version
-        - `pip show precisionai-agristress-utils` output
-        - OS
-    validations:
-      required: true
+      label: Relevant logs or traceback
+      render: shell

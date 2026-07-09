@@ -1,13 +1,21 @@
 ## Summary
 
-<!-- What does this PR do? 1-3 bullet points. -->
+Briefly describe what this PR changes and why.
+
+## Changes
 
 -
+-
+-
 
-## Test plan
+## Testing
 
-<!-- How did you verify the change works? -->
+Describe how this was tested.
 
-- [ ] Pre-commit hooks pass (`pre-commit run --all-files`)
-- [ ] Tests pass with ≥ 90% coverage (`python -m pytest`)
-- [ ] New/changed behavior has test coverage
+- [ ] Tests pass locally
+- [ ] Linting passes
+- [ ] Documentation updated, if needed
+
+## Notes
+
+Add any reviewer context, screenshots, or follow-up items here.
