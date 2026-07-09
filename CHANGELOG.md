@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated `docs/assets/logo.png` with a refined logo image.
 - Increased logo display width in `README.md` from 120px to 160px.
+- Replaced `.github/PULL_REQUEST_TEMPLATE.md` with the standard template shared across PAI repos.
 
 ## [1.0.0] - 2026-07-08
 
