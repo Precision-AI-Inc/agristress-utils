@@ -15,6 +15,7 @@ repos:
       - id: check-merge-conflict
       - id: detect-private-key
       - id: debug-statements
+      - id: fix-byte-order-marker
 
   # ── Ruff: lint + format + import sorting ───────────────────────────────────
   - repo: https://github.com/astral-sh/ruff-pre-commit
