@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-03
+
 ### Fixed
 
 - `LICENSE.md` now carries the exact Apache License 2.0 text. The previous copy had
@@ -47,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Pydantic record models: `ImageRecord`, `InstanceRecord`, `ImageAttributes`.
 - Retrieval payload builders: `build_i2i_payload`, `build_p2i_payload`, `build_p2p_payload`.
 
-[Unreleased]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Precision-AI-Inc/agristress-utils/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/Precision-AI-Inc/agristress-utils/releases/tag/v0.1.0
