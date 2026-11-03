@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `LICENSE.md` now carries the exact Apache License 2.0 text. The previous copy had
+  several clauses reworded or cut short, so GitHub could not identify the license, and
+  the package shipped a license that was not quite Apache 2.0.
+
 ## [1.0.1] - 2026-07-09
 
 ### Changed
